@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<a href="@Url.Action("NotSecuredPage", "Home")">Back to Not Secured Page</a>
+<br>
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" />
+    <br>
+    <br>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" />
+    <br>
+    <br>
+    <button type="submit">Login</button>
+
+    if (ViewBag.Error != null)
+    {
+        <div style="color:red;">@ViewBag.Error</div>
+    }
+
+
+}

@@ -1,0 +1,26 @@
+﻿@model CurrencyConverter.Models.CurrencyModel
+
+@{
+    ViewBag.Title = "Currency Converter";
+}
+
+<h2>Currency Converter</h2>
+
+@using (Html.BeginForm("ConvertCurrency", "Home", FormMethod.Post))
+{
+    <label for="SourceCurrency">Source Currency:</label>
+    @Html.DropDownListFor(model => model.SourceCurrency, (SelectList)ViewBag.Currencies, "Select Currency", new { @class = "form-control" })
+
+    <label for="DestinationCurrency">Destination Currency:</label>
+    @Html.DropDownListFor(model => model.DestinationCurrency, (SelectList)ViewBag.Currencies, "Select Currency", new { @class = "form-control" })
+
+    <label for="Amount">Amount:</label>
+    @Html.TextBoxFor(model => model.Amount, new { @class = "form-control" })
+    <br>
+    <input type="submit" value="Convert" class="btn btn-primary" />
+
+    if (Model != null && Model.ConvertedAmount > 0)
+    {
+        <h3>Converted Amount: @Model.ConvertedAmount @Model.DestinationCurrency</h3>
+    }
+}
